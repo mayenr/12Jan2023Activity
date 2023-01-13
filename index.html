@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PH Peso to US Dollar Easy Currency Converter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<style>
+    body {
+        background-image: url('background img03.jpg');
+        color: whitesmoke;
+        background-size: cover;
+    }
+    @media (min-width: 992px) {
+        #linebreak {
+            display: none;
+        }
+    }
+</style>
+</head>
+<body>
+    
+<!-----START Top NavBar-->
+    <div class="container-fluid" id="navbarcontainer">
+        <br>
+        <div class="container" >
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" style="margin: 0; padding: 0;">
+            <div class="container-fluid" style="margin: 0; padding-left: 1vh; padding-right: 1vh;">
+                <a class="navbar-brand" href="index.html">
+                    <img src="logo.jpg" alt="" width="70" height="50" padding="0" margin="0"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html"><h5>HOME</h5></a>
+                    </li>
+                </ul>
+                <span class="navbar-text"><b>Convert PHP to USD Currency easy 1-2-3!</b>
+                </span>
+            </div>
+            </div>
+        </nav>
+        <br><br>
+    </div>
+    </div>
+    <br>
+<!-----END Top NavBar-->
+<!-----START Content-->    
+    <div class="container">
+        <h1 style="background-color: rgb(13, 8, 65);">Philippine Pesos to US Dollar Currency Easy Converter</h1>
+    </div>
+    <div class="container">
+        <h4 id="welcomebox1" style="background-color: rgb(13, 8, 65);"></h4>
+        <br>
+        <h5 id="welcomebox2" style="background-color: rgb(13, 8, 65);"></h5>
+    </div>
+    <div class="container">
+        <br><br><br>
+        <div class="row">
+<!-----Area to Type in Amount-->
+            <div class="col-lg-3">
+                <input type="number" class="form-control" id="amount" min="1" required>
+                <br> 
+            </div>
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span><img src="philippines.png" alt="phpflag" style="padding: 0; padding-right: 1vw; margin: 0; width: 50px;"></span>
+                        <select class="form-select" id="currency-1">
+                            <option>PHP  ₱</option>
+                        </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <center><h5 style="background-color: rgb(13, 8, 65); padding-top: 1vh; padding-bottom: 1vh;">Converted to</h5></center>
+            </div>
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span><img src="united-states.png" alt="phpflag" style="padding: 0; padding-right: 1vw; margin: 0; width: 50px;"></span>
+                        <select class="form-select" id="currency-2">
+                            <option>USD  $</option>
+                        </select>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 2vh;">
+            <div class="col-lg-3">
+<!-----Area where Converted Amount will Appear-->
+                <div class="container border" id="convertedcontainer" style="background-color: white; height: 10vh; border-color: black; color: black;">
+                    <br>
+                    <h6 id="converted"></h6>
+                </div>
+            </div>
+            <div class="col-lg-2">
+<!-----Convert Button-->                
+                <div class="container" style="height: 10vh; border-color: black;">
+                    <button type="button" class="btn btn-secondary" id="convertbtn" onclick="convert()" style="margin-top: 10%; width: 150px;">Convert Now
+                    </button>             
+                </div>
+            </div>
+            <div class="col-lg-2">
+<!-----Reset Button-->            
+                <div class="container" style="height: 10vh; border-color: black;">
+                    <button type="reset" class="btn btn-secondary" id="resetbtn" onclick="reset()" style="margin-top: 10%;  width: 150px;">Reset Data
+                    </button>
+                </div>
+            </div>        
+        </div><br>
+        <br id="linebreak"><br id="linebreak">    
+        <div class="row">
+            <div class="container" style="background-color: rgba(13, 8, 65, 0.932); height: 15vh; padding-top: 3vh; padding-bottom: 3vh; padding-left: 4vh;">
+                <h3 id="async"></h3>
+                <br>
+            </div>
+        </div>
+    </div>
+<!-----END Content-->    
+
+<script>
+/*Function for Welcome (JS SetTimeOut)*/
+    function welcome() {
+        document.getElementById("welcomebox2").innerHTML="Convert your money from Philippine Pesos to US Dollars easily with our PHP to USD Easy Converter.";    
+    } 
+    setTimeout (welcome, 3000);
+    document.getElementById("welcomebox1").innerHTML= "Welcome to our PHP to USD Easy Converter";
+
+/*Function for Convert Button with Conditional Statement*/
+    function convert() {
+        const x = +document.getElementById("amount").value;
+        const y = 55.04;
+        const z = x / y;
+        const Rounded = z.toFixed(2);
+        document.getElementById("converted").innerHTML= Rounded + " " + " $ " + "US Dollars" ;
+        
+        if (x < 0) {
+            document.getElementById("converted").innerHTML = "NULL";
+            document.getElementById('convertedcontainer').style.backgroundColor = "red";
+            document.getElementById('convertedcontainer').style.color = "white";
+        }
+        
+        else {
+            document.getElementById("converted").innerHTML= Rounded + " " + " $ " + "US Dollars" ;
+        }
+    }
+    
+/*Function for Reset Button*/    
+    function reset() {
+        document.getElementById("amount").value= "";
+        document.getElementById("converted").innerHTML= "";
+        document.getElementById('convertedcontainer').style.backgroundColor = "white";
+        document.getElementById('convertedcontainer').style.color = "black";
+    }
+
+/*JS Asynchronous Function Promise with Await*/
+let promise = new Promise(function (resolve, reject) {
+    setTimeout(function () {
+        resolve('Thank you for using our Easy Converter.')},
+        10000);
+        });
+    async function asyncFunc() {
+        let result = await promise; 
+        document.getElementById("async").innerHTML= result;
+    }
+    asyncFunc();          
+</script>
+
+</body>
+</html>
