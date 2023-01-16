@@ -123,7 +123,7 @@
 /*Functions for Welcome (JS SetTimeOut)*/
     let i = 0;
     let txt = 'Philippine Pesos to US Dollar Currency Easy Converter';
-    let speed = 45;
+    let speed = 55;
 
     function typeWriter() {
         if (i < txt.length) {
@@ -137,7 +137,7 @@
     function welcome() {
         document.getElementById("welcomebox2").innerHTML="Convert your money from Philippine Pesos to US Dollars easily with our PHP to USD Easy Converter.";    
     } 
-    setTimeout (welcome, 3000);
+    setTimeout (welcome, 6000);
     document.getElementById("welcomebox1").innerHTML= "Welcome to our PHP to USD Easy Converter";
 
 /*Function for Convert Button with Conditional Statement*/
@@ -145,8 +145,9 @@
         const x = +document.getElementById("amount").value;
         const y = 55.04;
         const z = x / y;
-        const Rounded = z.toFixed(2);
-        document.getElementById("converted").innerHTML= Rounded + " " + " $ " + "US Dollars" ;
+        const Rounded = Math.round(z*100)/100;
+        const with_comma = Rounded.toLocaleString("en-US");
+        document.getElementById("converted").innerHTML= with_comma + " " + " $ " + "US Dollars" ;
         
         if (x < 0) {
             document.getElementById("converted").innerHTML = "NULL";
@@ -155,7 +156,7 @@
         }
         
         else {
-            document.getElementById("converted").innerHTML= Rounded + " " + " $ " + "US Dollars" ;
+            document.getElementById("converted").innerHTML= with_comma + " " + " $ " + "US Dollars" ;
         }
     }
     
